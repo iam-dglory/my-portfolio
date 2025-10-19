@@ -114,16 +114,17 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 50%;
+    width: 55%;
     height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
+    background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&auto=format&fit=crop');
+    background-size: contain;
+    background-position: right center;
     background-repeat: no-repeat;
-    opacity: 0.3;
-    mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    opacity: 0.4;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 20%, rgba(0,0,0,0.6) 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 20%, rgba(0,0,0,0.6) 60%, transparent 100%);
     z-index: 1;
+    filter: drop-shadow(0 0 30px rgba(229, 9, 20, 0.2));
 }
 
 .hero-content {
@@ -268,7 +269,7 @@ body {
 /* Project Cards */
 .project-card {
     min-width: 350px;
-    height: 200px;
+    height: 250px;
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
@@ -278,88 +279,115 @@ body {
 }
 
 .project-card:hover {
-    transform: scale(1.08) translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05) translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
 }
 
 .project-image {
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
     position: relative;
+    padding: 25px;
     transition: all 0.3s ease;
 }
 
-.project-card:hover .project-image {
-    filter: brightness(1.1);
+.project-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 0;
+}
+
+.project-card:hover .project-image::before {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
 }
 
 .project-overlay {
-    padding: 20px;
-    text-align: center;
-    opacity: 0;
-    transition: all 0.4s ease;
-    transform: translateY(20px);
-}
-
-.project-card:hover .project-overlay {
+    position: relative;
+    z-index: 1;
+    text-align: left;
     opacity: 1;
+    transition: all 0.4s ease;
     transform: translateY(0);
+    width: 100%;
 }
 
 .project-overlay h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
     font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .project-overlay p {
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-card:hover .project-overlay p {
+    -webkit-line-clamp: 3;
 }
 
 .project-tags {
     display: flex;
-    gap: 8px;
-    justify-content: center;
+    gap: 6px;
     flex-wrap: wrap;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .project-tags span {
-    background-color: rgba(255, 255, 255, 0.25);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.project-tags span:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px);
+.project-card:hover .project-tags span {
+    background-color: rgba(229, 9, 20, 0.3);
+    border-color: var(--netflix-red);
 }
 
 .project-learn-more {
-    background-color: var(--netflix-red);
+    background-color: rgba(229, 9, 20, 0.9);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 18px;
     border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.project-card:hover .project-learn-more {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: var(--netflix-red);
 }
 
 .project-learn-more:hover {
     background-color: #f40612;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.6);
 }
 
 /* Modal */
