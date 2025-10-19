@@ -272,12 +272,14 @@ body {
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .project-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
 }
 
 .project-image {
@@ -287,22 +289,30 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    filter: brightness(1.1);
 }
 
 .project-overlay {
     padding: 20px;
     text-align: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.4s ease;
+    transform: translateY(20px);
 }
 
 .project-card:hover .project-overlay {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .project-overlay h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .project-overlay p {
@@ -316,14 +326,172 @@ body {
     gap: 8px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 
 .project-tags span {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.25);
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
     backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.project-tags span:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.project-learn-more {
+    background-color: var(--netflix-red);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.project-learn-more:hover {
+    background-color: #f40612;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: var(--netflix-red);
+    transform: rotate(90deg);
+}
+
+.modal-body h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--netflix-red);
+}
+
+.modal-body p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: var(--netflix-light-gray);
+}
+
+.modal-tech {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+
+.modal-tech span {
+    background-color: rgba(229, 9, 20, 0.2);
+    border: 1px solid var(--netflix-red);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: white;
+}
+
+.modal-details {
+    margin-top: 25px;
+}
+
+.modal-details h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    color: white;
+}
+
+.modal-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-details li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    color: var(--netflix-light-gray);
+}
+
+.modal-details li:before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--netflix-red);
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Skill Cards */

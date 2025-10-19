@@ -158,7 +158,7 @@
         <div class="carousel">
             <button class="carousel-btn prev-btn">‹</button>
             <div class="carousel-container">
-                <div class="project-card">
+                <div class="project-card" data-project="chatbot">
                     <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                         <div class="project-overlay">
                             <h3>AI Healthcare Chatbot (NLP)</h3>
@@ -169,10 +169,11 @@
                                 <span>NLP</span>
                                 <span>Apache Spark</span>
                             </div>
+                            <button class="project-learn-more">Learn More →</button>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="oceanmind">
                     <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                         <div class="project-overlay">
                             <h3>OceanMind App</h3>
@@ -183,10 +184,11 @@
                                 <span>EEG Processing</span>
                                 <span>SAS</span>
                             </div>
+                            <button class="project-learn-more">Learn More →</button>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="lane-detection">
                     <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
                         <div class="project-overlay">
                             <h3>Lane Detection Bot</h3>
@@ -197,10 +199,11 @@
                                 <span>Raspberry Pi</span>
                                 <span>YOLO</span>
                             </div>
+                            <button class="project-learn-more">Learn More →</button>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="robotics">
                     <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
                         <div class="project-overlay">
                             <h3>Maze Solver & Line Follower Bot</h3>
@@ -211,10 +214,11 @@
                                 <span>PID Control</span>
                                 <span>R</span>
                             </div>
+                            <button class="project-learn-more">Learn More →</button>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="kiosk">
                     <div class="project-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
                         <div class="project-overlay">
                             <h3>Interactive Kiosk</h3>
@@ -224,10 +228,11 @@
                                 <span>Voice AI</span>
                                 <span>3D Display</span>
                             </div>
+                            <button class="project-learn-more">Learn More →</button>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-project="ai-video">
                     <div class="project-image" style="background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);">
                         <div class="project-overlay">
                             <h3>AI Video Generation Projects</h3>
@@ -237,6 +242,7 @@
                                 <span>Video Synthesis</span>
                                 <span>Diffusion Models</span>
                             </div>
+                            <button class="project-learn-more">Learn More →</button>
                         </div>
                     </div>
                 </div>
@@ -414,6 +420,19 @@
             </div>
         </div>
     </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <h2 id="modalTitle"></h2>
+                <div id="modalDescription"></div>
+                <div id="modalTechnologies" class="modal-tech"></div>
+                <div id="modalDetails" class="modal-details"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
