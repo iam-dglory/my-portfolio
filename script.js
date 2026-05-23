@@ -1,282 +1,325 @@
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
+/* script.js — GOPIKA.EXE portfolio */
+(function () {
+  'use strict';
+
+  /* ── BOOT SEQUENCE ─────────────────────────────────────── */
+  const BOOT_STEPS = [
+    { tag: '[INIT]',  cls: '',     msg: 'Loading GOPIKA.exe — multi-agent human system...' },
+    { tag: '[OK]',    cls: 'ok',   msg: 'Master of Artificial Intelligence module — RMIT active' },
+    { tag: '[OK]',    cls: 'ok',   msg: 'Co-Founder credentials verified — AI Chroney' },
+    { tag: '[OK]',    cls: 'ok',   msg: 'NVIDIA autonomous vehicle data pipelines connected' },
+    { tag: '[OK]',    cls: 'ok',   msg: 'Prompt Engineering agent — Raamya.ai loaded' },
+    { tag: '[OK]',    cls: 'ok',   msg: 'Robotics & Embedded module — Coamedkares armed' },
+    { tag: '[OK]',    cls: 'ok',   msg: 'Marketing & Growth stack — AI Chroney operational' },
+    { tag: '[WARN]',  cls: 'warn', msg: '8 agent modules detected — exceeds standard single hire' },
+    { tag: '[SYS]',   cls: 'ok',   msg: 'All systems nominal. Deploying interface...' },
+  ];
+
+  const bootLog = document.getElementById('boot-log');
+  const bootBar = document.getElementById('boot-bar');
+  const bootPct = document.getElementById('boot-pct');
+  const bootOverlay = document.getElementById('boot-overlay');
+  const nav = document.getElementById('nav');
+
+  let stepIndex = 0;
+  function runBootStep() {
+    if (stepIndex >= BOOT_STEPS.length) {
+      // all steps done — dismiss
+      setTimeout(() => {
+        bootOverlay.classList.add('hide');
+        nav.classList.add('visible');
+        setTimeout(() => { bootOverlay.style.display = 'none'; }, 950);
+        startParticles();
+        initTerminal();
+      }, 400);
+      return;
+    }
+    const s = BOOT_STEPS[stepIndex];
+    const line = document.createElement('div');
+    line.className = 'boot-log-line';
+    line.innerHTML = `<span class="blog-tag ${s.cls}">${s.tag}</span><span>${s.msg}</span>`;
+    bootLog.appendChild(line);
+    requestAnimationFrame(() => line.classList.add('show'));
+
+    const pct = Math.round(((stepIndex + 1) / BOOT_STEPS.length) * 100);
+    bootBar.style.width = pct + '%';
+    bootPct.textContent = pct + '%';
+
+    stepIndex++;
+    setTimeout(runBootStep, stepIndex === 1 ? 250 : 280 + Math.random() * 80);
+  }
+
+  // Boot canvas — scanline + glitch lines
+  (function initBootCanvas() {
+    const bc = document.getElementById('boot-canvas');
+    const bctx = bc.getContext('2d');
+    bc.width = window.innerWidth;
+    bc.height = window.innerHeight;
+
+    function drawBootBg() {
+      bctx.clearRect(0, 0, bc.width, bc.height);
+      // subtle grid
+      bctx.strokeStyle = 'rgba(0,229,255,0.03)';
+      bctx.lineWidth = 1;
+      const gs = 60;
+      for (let x = 0; x < bc.width; x += gs) {
+        bctx.beginPath(); bctx.moveTo(x, 0); bctx.lineTo(x, bc.height); bctx.stroke();
+      }
+      for (let y = 0; y < bc.height; y += gs) {
+        bctx.beginPath(); bctx.moveTo(0, y); bctx.lineTo(bc.width, y); bctx.stroke();
+      }
+      requestAnimationFrame(drawBootBg);
+    }
+    drawBootBg();
+  })();
+
+  setTimeout(runBootStep, 300);
+
+  /* ── NAV SCROLL ────────────────────────────────────────── */
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
     } else {
-        navbar.classList.remove('scrolled');
+      nav.classList.remove('scrolled');
     }
-});
+  });
 
-// Carousel functionality
-function setupCarousel(prevBtnClass, nextBtnClass, containerSelector) {
-    const prevBtn = document.querySelector(prevBtnClass);
-    const nextBtn = document.querySelector(nextBtnClass);
-    const container = document.querySelector(containerSelector);
+  // Mobile toggle
+  const navToggle = document.getElementById('nav-toggle');
+  if (navToggle) {
+    navToggle.addEventListener('click', () => nav.classList.toggle('mobile-open'));
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => nav.classList.remove('mobile-open'));
+  });
 
-    if (!prevBtn || !nextBtn || !container) return;
+  /* ── HERO CANVAS PARTICLES ─────────────────────────────── */
+  function startParticles() {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
 
-    const scrollAmount = 370;
-
-    nextBtn.addEventListener('click', () => {
-        container.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    });
-
-    prevBtn.addEventListener('click', () => {
-        container.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// Setup all carousels
-document.addEventListener('DOMContentLoaded', () => {
-    // Projects carousel
-    const carousels = document.querySelectorAll('.carousel');
-
-    carousels.forEach((carousel, index) => {
-        const prevBtn = carousel.querySelector('.prev-btn');
-        const nextBtn = carousel.querySelector('.next-btn');
-        const container = carousel.querySelector('.carousel-container');
-
-        if (!prevBtn || !nextBtn || !container) return;
-
-        const scrollAmount = 370;
-
-        nextBtn.addEventListener('click', () => {
-            container.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        });
-
-        prevBtn.addEventListener('click', () => {
-            container.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
-        });
-
-        // Add mouse drag scrolling
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        container.addEventListener('mousedown', (e) => {
-            isDown = true;
-            container.style.cursor = 'grabbing';
-            startX = e.pageX - container.offsetLeft;
-            scrollLeft = container.scrollLeft;
-        });
-
-        container.addEventListener('mouseleave', () => {
-            isDown = false;
-            container.style.cursor = 'grab';
-        });
-
-        container.addEventListener('mouseup', () => {
-            isDown = false;
-            container.style.cursor = 'grab';
-        });
-
-        container.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - container.offsetLeft;
-            const walk = (x - startX) * 2;
-            container.scrollLeft = scrollLeft - walk;
-        });
-    });
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// CTA Button functionality
-document.querySelector('.cta-button').addEventListener('click', () => {
-    document.querySelector('#contact').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-});
-
-// View Projects button
-document.querySelector('.btn-primary').addEventListener('click', () => {
-    document.querySelector('#projects').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-});
-
-// More Info button
-document.querySelector('.btn-secondary').addEventListener('click', () => {
-    document.querySelector('#about').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-});
-
-// Add intersection observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('.content-section, .about-section, .contact-section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
-});
-
-// Project Modal Data
-const projectData = {
-    'chatbot': {
-        title: 'AI Healthcare Chatbot (NLP)',
-        description: 'Healthcare chatbots often lack the ability to understand complex, nuanced medical language. Patients need quick, accurate information, but building a compliant, reliable system is challenging.',
-        technologies: ['TensorFlow', 'PyTorch', 'Apache Spark', 'NLP', 'HIPAA Compliance'],
-        details: {
-            'Problem': 'Healthcare chatbots often lack the ability to understand complex, nuanced medical language. Patients need quick, accurate information, but building a compliant, reliable system is challenging.',
-            'My Contribution': 'Developed a HIPAA-compliant healthcare chatbot using transformer-based NLP models trained with TensorFlow and PyTorch. The model performs intent classification (recognizing user intent like "What are my symptoms?") and entity extraction (pulling key information like "headache" or "fever"). Integrated Apache Spark for scalable data processing to handle large datasets efficiently.',
-            'Impact': 'Enabled faster symptom triage and boosted patient engagement by 30%. The chatbot provides accurate medical information while maintaining strict HIPAA compliance standards.'
-        }
-    },
-    'oceanmind': {
-        title: 'OceanMind App',
-        description: 'Understanding and predicting a person\'s mood through physiological signals like brainwaves is a complex challenge requiring advanced AI and signal processing.',
-        technologies: ['TensorFlow', 'RNN', 'EEG Processing', 'SAS', 'Lovable AI'],
-        details: {
-            'Problem': 'Understanding and predicting mood through subtle physiological signals like brainwaves requires sophisticated analysis and real-time processing capabilities.',
-            'My Contribution': 'Founded and built OceanMind using Lovable AI - a healthcare app that processes EEG signals to predict user mood. Implemented a Recurrent Neural Network (RNN) with TensorFlow and SAS, perfect for time-series data like brainwaves. Used adaptive channel selection to focus on the most relevant data and cross-validation to ensure accuracy. Integrated Apache Spark for scalable data processing.',
-            'Impact': 'Created a novel approach to mental wellness by providing personalized mood regulation through binaural beats. The app demonstrates innovative use of neurological data for mental health applications.'
-        }
-    },
-    'lane-detection': {
-        title: 'Lane Detection Bot',
-        description: 'Autonomous systems need to navigate real environments with high accuracy using limited computational resources at the edge.',
-        technologies: ['OpenCV', 'MATLAB', 'Raspberry Pi', 'YOLO', 'Edge Computing'],
-        details: {
-            'Problem': 'Autonomous systems need real-time navigation with limited resources. Traditional solutions require expensive hardware and high computational power.',
-            'My Contribution': 'Engineered a real-time lane detection system on Raspberry Pi using OpenCV and MATLAB. Achieved 85% accuracy using Canny edge detection and Hough Transform. Optimized for low-latency autonomous navigation with SQL for data logging. Implemented YOLO for object detection on edge devices with model pruning for efficient inference.',
-            'Impact': 'Demonstrated that sophisticated computer vision can run on affordable edge devices, making autonomous navigation accessible for educational and small-scale applications.'
-        }
-    },
-    'robotics': {
-        title: 'Maze Solver & Line Follower Bot',
-        description: 'Building autonomous robots that can navigate complex environments and make real-time decisions using minimal sensors.',
-        technologies: ['Arduino', 'MATLAB', 'PID Control', 'IR Sensors', 'R'],
-        details: {
-            'Problem': 'Autonomous robots need to solve complex navigation problems in real-time with limited sensor input and processing power.',
-            'My Contribution': 'Built Arduino-based robots with IR sensors implementing pathfinding algorithms for maze solving. Used MATLAB for PID control tuning to ensure smooth, precise movements. Applied R for sensor data analysis to optimize decision-making algorithms in real-time.',
-            'Impact': 'Created cost-effective autonomous robots capable of solving complex navigation challenges, demonstrating practical applications of control theory and pathfinding algorithms.'
-        }
-    },
-    'kiosk': {
-        title: 'Interactive Kiosk',
-        description: 'Creating an engaging, interactive experience combining voice AI and holographic display technology.',
-        technologies: ['Raspberry Pi', 'Voice AI', '3D Holographic Display', 'Python'],
-        details: {
-            'Problem': 'Traditional kiosks lack engagement and interactivity. Modern users expect natural, voice-based interactions and visually compelling displays.',
-            'My Contribution': 'Designed and built a Raspberry Pi-powered interactive kiosk featuring a voice assistant for natural language interaction and a 3D holographic display for immersive visual experiences. Integrated speech recognition and synthesis for seamless user communication.',
-            'Impact': 'Created an innovative user interface that combines cutting-edge display technology with natural voice interaction, significantly enhancing user engagement and experience.'
-        }
-    },
-    'ai-video': {
-        title: 'AI Video Generation Projects',
-        description: 'Leveraging the latest in generative AI to synthesize realistic videos and creative content from text prompts and other inputs.',
-        technologies: ['GenAI', 'Diffusion Models', 'Video Synthesis', 'LLMs', 'NVIDIA'],
-        details: {
-            'Problem': 'Video content creation is time-consuming and requires significant resources. Generative AI can revolutionize content creation but requires expertise in cutting-edge models.',
-            'My Contribution': 'Working at NVIDIA as Associate Prompt Engineer, developing and optimizing prompts for AI video generation models. Leveraging diffusion models and generative AI techniques to create high-quality video content from text descriptions. Exploring applications in creative content generation and automated video synthesis.',
-            'Impact': 'Pushing the boundaries of what\'s possible with AI-generated video content, making professional video creation more accessible and efficient.'
-        }
+    let W, H;
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
     }
-};
+    resize();
+    window.addEventListener('resize', resize);
 
-// Modal functionality
-const modal = document.getElementById('projectModal');
-const modalTitle = document.getElementById('modalTitle');
-const modalDescription = document.getElementById('modalDescription');
-const modalTechnologies = document.getElementById('modalTechnologies');
-const modalDetails = document.getElementById('modalDetails');
-const modalClose = document.querySelector('.modal-close');
+    const COLORS = ['#00e5ff', '#00ff94', '#ffb300', '#ae52f4'];
+    const pts = Array.from({ length: 70 }, () => ({
+      x: Math.random() * 1920,
+      y: Math.random() * 1080,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      r: Math.random() * 1.2 + 0.4,
+      a: Math.random() * 0.45 + 0.08,
+      c: COLORS[Math.floor(Math.random() * COLORS.length)]
+    }));
 
-// Open modal when project card is clicked
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-        const projectId = card.getAttribute('data-project');
-        const project = projectData[projectId];
+    // Large accent orbs
+    const orbs = [
+      { x: W * 0.8, y: -100, r: 350, c: 'rgba(0,229,255,0.035)', dx: 0.08, dy: 0.04 },
+      { x: W * 0.1, y: H * 0.7, r: 260, c: 'rgba(174,82,244,0.025)', dx: -0.05, dy: -0.03 },
+    ];
 
-        if (project) {
-            // Set modal content
-            modalTitle.textContent = project.title;
-            modalDescription.innerHTML = `<p>${project.description}</p>`;
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
 
-            // Set technologies
-            modalTechnologies.innerHTML = project.technologies
-                .map(tech => `<span>${tech}</span>`)
-                .join('');
+      // orbs
+      orbs.forEach(o => {
+        o.x += o.dx; o.y += o.dy;
+        const grad = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+        grad.addColorStop(0, o.c);
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
 
-            // Set detailed sections
-            let detailsHTML = '';
-            for (const [key, value] of Object.entries(project.details)) {
-                detailsHTML += `
-                    <h3>${key}</h3>
-                    <p>${value}</p>
-                `;
-            }
-            modalDetails.innerHTML = detailsHTML;
+      // particles
+      pts.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.c;
+        ctx.globalAlpha = p.a;
+        ctx.fill();
+      });
 
-            // Show modal
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+      // connections
+      ctx.globalAlpha = 1;
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.strokeStyle = '#00e5ff';
+            ctx.globalAlpha = (1 - dist / 130) * 0.06;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
         }
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
+  /* ── COUNTER ANIMATION ─────────────────────────────────── */
+  function animateCounters() {
+    document.querySelectorAll('.counter[data-target]').forEach(el => {
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1200;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + (el.dataset.suffix || '');
+      }
+      requestAnimationFrame(step);
     });
-});
+  }
 
-// Close modal
-modalClose.addEventListener('click', () => {
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-});
+  /* ── TERMINAL TYPEWRITER ───────────────────────────────── */
+  function initTerminal() {
+    const body = document.getElementById('terminal-body');
+    if (!body) return;
 
-// Close modal when clicking outside
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+    const LINES = [
+      { type: 'prompt', cmd: 'query --profile gopika.aravind --format json' },
+      { type: 'out', html: '{' },
+      { type: 'out', html: '  <span class="t-key">"name"</span>: <span class="t-str">"Gopika Aravind"</span>,' },
+      { type: 'out', html: '  <span class="t-key">"location"</span>: <span class="t-str">"Melbourne, Australia"</span>,' },
+      { type: 'out', html: '  <span class="t-key">"education"</span>: <span class="t-str">"M.AI @ RMIT | B.E Electronics CGPA 4.15/5"</span>,' },
+      { type: 'out', html: '  <span class="t-key">"companies_founded"</span>: <span class="t-val">["AI Chroney"]</span>,' },
+      { type: 'out', html: '  <span class="t-key">"worked_at"</span>: <span class="t-val">["NVIDIA", "Raamya.ai", "Superprof", "Coamedkares"]</span>,' },
+      { type: 'out', html: '  <span class="t-key">"agent_modules"</span>: <span class="t-val">8</span>,' },
+      { type: 'out', html: '  <span class="t-key">"team_managed"</span>: <span class="t-val">"50+ members"</span>,' },
+      { type: 'out', html: '  <span class="t-key">"status"</span>: <span class="t-str">"AVAILABLE FOR DEPLOYMENT"</span>' },
+      { type: 'out', html: '}' },
+      { type: 'blank' },
+      { type: 'prompt', cmd: 'query --why-hire' },
+      { type: 'out', html: '<span class="t-str">"You don\'t need five hires. You need one system.</span>' },
+      { type: 'out', html: '<span class="t-str"> PM + AI Engineer + Growth + Ops + Design + Sales.</span>' },
+      { type: 'out', html: '<span class="t-str"> I am not a candidate. I am a team compressed into one human."</span>' },
+      { type: 'cursor' },
+    ];
+
+    // Clear default line
+    body.innerHTML = '';
+
+    let i = 0;
+    function nextLine() {
+      if (i >= LINES.length) return;
+      const l = LINES[i++];
+      const div = document.createElement('div');
+      div.className = 't-line';
+
+      if (l.type === 'prompt') {
+        div.innerHTML = `<span class="t-prompt">$</span> <span class="t-cmd"></span><span class="t-caret"></span>`;
+        body.appendChild(div);
+        const cmdEl = div.querySelector('.t-cmd');
+        const caretEl = div.querySelector('.t-caret');
+        typeCommand(l.cmd, cmdEl, caretEl, () => {
+          caretEl.classList.add('hidden');
+          setTimeout(nextLine, 120);
+        });
+      } else if (l.type === 'out') {
+        div.innerHTML = `<span class="t-out">${l.html}</span>`;
+        body.appendChild(div);
+        body.scrollTop = body.scrollHeight;
+        setTimeout(nextLine, 60);
+      } else if (l.type === 'blank') {
+        body.appendChild(div);
+        setTimeout(nextLine, 200);
+      } else if (l.type === 'cursor') {
+        div.innerHTML = `<span class="t-prompt">$</span> <span class="t-caret"></span>`;
+        body.appendChild(div);
+      }
+      body.scrollTop = body.scrollHeight;
     }
-});
 
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+    function typeCommand(text, el, caret, done) {
+      let j = 0;
+      function tick() {
+        if (j < text.length) {
+          el.textContent += text[j++];
+          setTimeout(tick, 28 + Math.random() * 15);
+        } else {
+          done();
+        }
+      }
+      tick();
     }
-});
+
+    nextLine();
+  }
+
+  /* ── SCROLL REVEAL ─────────────────────────────────────── */
+  const srObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.delay || 0;
+        setTimeout(() => entry.target.classList.add('in'), parseInt(delay));
+        srObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  function registerRevealTargets() {
+    // Agent cards
+    document.querySelectorAll('.agent-card').forEach((el, i) => {
+      el.classList.add('sr');
+      el.dataset.delay = i * 65;
+      srObserver.observe(el);
+    });
+    // Exp items
+    document.querySelectorAll('.exp-item').forEach((el, i) => {
+      el.classList.add('sr');
+      el.dataset.delay = i * 100;
+      srObserver.observe(el);
+    });
+    // Project cards
+    document.querySelectorAll('.proj-card').forEach((el, i) => {
+      el.classList.add('sr');
+      el.dataset.delay = i * 80;
+      srObserver.observe(el);
+    });
+    // Skill rows
+    document.querySelectorAll('.skill-row').forEach((el, i) => {
+      el.classList.add('sr');
+      el.dataset.delay = i * 30;
+      srObserver.observe(el);
+    });
+    // Section intros
+    document.querySelectorAll('.section-intro, .contact-left, .contact-right').forEach(el => {
+      el.classList.add('sr');
+      el.dataset.delay = 0;
+      srObserver.observe(el);
+    });
+  }
+
+  // Counter triggers when hero-metrics enters view
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounters(); counterObs.disconnect(); }
+    });
+  }, { threshold: 0.5 });
+  const heroMetrics = document.querySelector('.hero-metrics');
+  if (heroMetrics) counterObs.observe(heroMetrics);
+
+  registerRevealTargets();
+
+})();
