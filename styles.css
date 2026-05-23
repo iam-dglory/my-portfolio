@@ -275,3 +275,178 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-ui);overflow
 }
 @media(max-width:640px){.agents-grid{grid-template-columns:1fr}.projects-grid{grid-template-columns:1fr}.proj-card.proj-featured{grid-column:1}.hero-name{font-size:18vw}.hero-metrics{flex-wrap:wrap;gap:20px 0}.metric-div{display:none}.metric{padding:0 28px 0 0}.float-badge{display:none}}
 #nav.mobile-open .nav-links{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(8,12,16,.97);padding:24px;gap:20px;border-bottom:1px solid var(--border);backdrop-filter:blur(14px)}
+
+/* ══════════════════════════════════════════════════
+   SCROLL REVEAL — multi-directional
+══════════════════════════════════════════════════ */
+.sr            { opacity:0; will-change:opacity,transform; transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+.sr.in         { opacity:1; transform:none!important; }
+
+.sr-up         { transform:translateY(48px); }
+.sr-left       { transform:translateX(-52px); }
+.sr-right      { transform:translateX(52px); }
+.sr-scale      { transform:scale(.93) translateY(24px); }
+
+/* ══════════════════════════════════════════════════
+   SPLIT-TEXT HEADING REVEAL
+══════════════════════════════════════════════════ */
+.word-wrap  { overflow:hidden; display:inline-block; vertical-align:bottom; }
+.word-inner {
+  display:inline-block;
+  transform:translateY(110%);
+  transition:transform .65s cubic-bezier(.16,1,.3,1);
+}
+.word-inner.word-revealed { transform:translateY(0); }
+
+/* space between words */
+.word-wrap + .word-wrap { margin-left:.22em; }
+
+/* ══════════════════════════════════════════════════
+   GLITCH on hero name
+══════════════════════════════════════════════════ */
+.hero-name.glitching .hero-name-accent {
+  animation: glitch-anim .2s steps(2) forwards;
+}
+@keyframes glitch-anim {
+  0%  { text-shadow:2px 0 var(--red),-2px 0 var(--green); clip-path:inset(10% 0 80% 0); }
+  25% { text-shadow:-3px 0 var(--cyan), 3px 0 var(--purple); clip-path:inset(60% 0 20% 0); }
+  50% { text-shadow:1px 0 var(--amber),-1px 0 var(--cyan); clip-path:inset(40% 0 40% 0); }
+  75% { text-shadow:-2px 0 var(--red),  2px 0 var(--green); clip-path:inset(80% 0 5% 0); }
+  100%{ text-shadow:none; clip-path:none; }
+}
+
+/* ══════════════════════════════════════════════════
+   AGENT CARD — 3D tilt base
+══════════════════════════════════════════════════ */
+.agent-card {
+  transition:transform .25s cubic-bezier(.16,1,.3,1), background .3s, box-shadow .3s;
+  transform-style:preserve-3d;
+}
+.agent-card:hover {
+  box-shadow:0 24px 48px rgba(0,0,0,.6), 0 0 0 1px rgba(0,229,255,.12);
+}
+
+/* ══════════════════════════════════════════════════
+   EXP NODE PING
+══════════════════════════════════════════════════ */
+.exp-node.node-ping {
+  animation: nodePing .6s ease forwards;
+}
+@keyframes nodePing {
+  0%  { transform:scale(1); }
+  40% { transform:scale(2.2); box-shadow:0 0 0 6px rgba(0,229,255,.25); }
+  100%{ transform:scale(1); }
+}
+
+/* ══════════════════════════════════════════════════
+   MAGNETIC BUTTON — smooth return via JS,
+   just ensure no layout jump
+══════════════════════════════════════════════════ */
+.btn-primary,
+.btn-ghost,
+.nav-cta {
+  transition: transform .35s cubic-bezier(.16,1,.3,1),
+              box-shadow .25s, background .2s, border-color .2s;
+}
+
+/* ══════════════════════════════════════════════════
+   MARQUEE — pause on hover
+══════════════════════════════════════════════════ */
+.marquee-strip:hover .marquee-track { animation-play-state:paused; }
+
+/* ══════════════════════════════════════════════════
+   PROJECT CARD — slide-in border on hover
+══════════════════════════════════════════════════ */
+.proj-card {
+  transition: background .3s, transform .4s cubic-bezier(.16,1,.3,1), box-shadow .3s;
+}
+.proj-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.5);
+}
+
+/* ══════════════════════════════════════════════════
+   CONTACT ROW — animated arrow slide
+══════════════════════════════════════════════════ */
+.contact-row {
+  transition: background .2s, transform .35s cubic-bezier(.16,1,.3,1);
+  overflow:hidden;
+  position:relative;
+}
+.contact-row::before {
+  content:'';
+  position:absolute; left:0; top:0; bottom:0;
+  width:2px;
+  background: var(--cyan);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform .35s cubic-bezier(.16,1,.3,1);
+}
+.contact-row:hover::before { transform:scaleY(1); }
+.contact-row:hover { transform:translateX(6px); }
+
+/* ══════════════════════════════════════════════════
+   SKILL ROW — shimmer on hover
+══════════════════════════════════════════════════ */
+.skill-row {
+  position:relative; overflow:hidden;
+}
+.skill-row::after {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(90deg, transparent 0%, rgba(0,229,255,.07) 50%, transparent 100%);
+  transform:translateX(-100%);
+  transition:transform .5s ease;
+}
+.skill-row:hover::after { transform:translateX(100%); }
+
+/* ══════════════════════════════════════════════════
+   HERO PHOTO — parallax handled by JS,
+   add a glow pulse on load
+══════════════════════════════════════════════════ */
+.hero-photo-wrap {
+  animation: photoReveal .9s cubic-bezier(.16,1,.3,1) 4.6s both;
+}
+@keyframes photoReveal {
+  from { opacity:0; transform:translateX(40px) scale(.96); }
+  to   { opacity:1; transform:translateX(0)    scale(1); }
+}
+
+/* floating badges — delay in */
+.float-badge-1 { animation: badgeF 4s ease-in-out infinite, badgeIn .6s cubic-bezier(.16,1,.3,1) 5.0s both; }
+.float-badge-2 { animation: badgeF 4s ease-in-out infinite 1.5s, badgeIn .6s cubic-bezier(.16,1,.3,1) 5.2s both; }
+.float-badge-3 { animation: badgeF 4s ease-in-out infinite .8s,  badgeIn .6s cubic-bezier(.16,1,.3,1) 5.4s both; }
+@keyframes badgeIn {
+  from { opacity:0; transform:scale(.7) translateY(12px); }
+  to   { opacity:1; transform:scale(1)  translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════
+   TERMINAL — slide up reveal
+══════════════════════════════════════════════════ */
+.terminal-container {
+  animation: termSlide .8s cubic-bezier(.16,1,.3,1) both;
+  animation-play-state:paused;
+}
+.terminal-container.visible { animation-play-state:running; }
+@keyframes termSlide {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════
+   SECTION LABEL — typewriter underline
+══════════════════════════════════════════════════ */
+.section-label {
+  position:relative; display:inline-block;
+}
+.section-label::after {
+  content:'';
+  position:absolute; bottom:-4px; left:0;
+  width:0; height:1px;
+  background:var(--cyan);
+  transition:width .6s cubic-bezier(.16,1,.3,1) .2s;
+}
+.sr.in .section-label::after,
+.section-intro.in .section-label::after { width:100%; }
+
