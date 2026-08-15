@@ -292,10 +292,10 @@
       el.dataset.delay = i * 100;
       srObserver.observe(el);
     });
-    // Project cards
-    document.querySelectorAll('.proj-card').forEach((el, i) => {
+    // Project cards — both old .proj-card and new .pv-card
+    document.querySelectorAll('.proj-card, .pv-card').forEach((el, i) => {
       el.classList.add('sr');
-      el.dataset.delay = i * 80;
+      el.dataset.delay = i * 70;
       srObserver.observe(el);
     });
     // Skill rows
