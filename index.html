@@ -6,14 +6,12 @@
 <title>GOPIKA ARAVIND — Multi-Agent Human System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=JetBrains+Mono:wght@200;400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,100;0,200;0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<canvas id="bg-canvas"></canvas>
-
-<!-- BOOT -->
+<!-- BOOT OVERLAY -->
 <div id="boot-overlay">
   <div class="boot-inner">
     <div class="boot-wordmark">GOPIKA<span>.EXE</span></div>
@@ -24,6 +22,7 @@
     </div>
     <div class="boot-subtitle">INITIALISING MULTI-AGENT HUMAN SYSTEM v2.6</div>
   </div>
+  <canvas id="boot-canvas"></canvas>
 </div>
 
 <!-- NAV -->
@@ -31,483 +30,664 @@
   <div class="nav-inner">
     <a href="#home" class="nav-logo">GOPIKA<span>.EXE</span></a>
     <ul class="nav-links">
-      <li><a href="#about">ABOUT</a></li>
-      <li><a href="#experience">EXPERIENCE</a></li>
-      <li><a href="#projects">PROJECTS</a></li>
-      <li><a href="#skills">SKILLS</a></li>
-      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="#agents" data-label="01">AGENTS</a></li>
+      <li><a href="#experience" data-label="02">EXPERIENCE</a></li>
+      <li><a href="#projects" data-label="03">PROJECTS</a></li>
+      <li><a href="#skills" data-label="04">SKILLS</a></li>
+      <li><a href="#contact" data-label="05">CONTACT</a></li>
     </ul>
     <a href="mailto:gopikaaravind2003@gmail.com" class="nav-cta">DEPLOY ME</a>
-    <button class="nav-mobile-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+    <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- ══ SECTION 1 — HERO ══ -->
+<!-- HERO -->
 <section id="home" class="hero">
   <canvas id="hero-canvas"></canvas>
-  <div class="hero-layout">
+  <div class="hero-noise"></div>
 
-    <div class="hero-content">
-      <div class="hero-status-bar">
-        <span class="status-pulse"></span>
-        <span>SYSTEM ONLINE</span>
-        <span class="status-sep">|</span>
-        <span>MELBOURNE, AU</span>
-        <span class="status-sep">|</span>
-        <span>M.AI — RMIT</span>
+  <div class="hero-content">
+    <div class="hero-status-bar">
+      <span class="status-pulse"></span>
+      <span class="status-text">SYSTEM ONLINE</span>
+      <span class="status-sep">|</span>
+      <span class="status-loc">PM @ TBG DIGITAL — MELBOURNE, AU</span>
+      <span class="status-sep">|</span>
+      <span class="status-edu">M.AI — RMIT UNIVERSITY</span>
+    </div>
+
+    <div class="hero-eyebrow">// MULTI-AGENT HUMAN SYSTEM v2.6</div>
+
+    <h1 class="hero-name">
+      <span class="hero-name-line" data-text="GOPIKA">GOPIKA</span>
+      <span class="hero-name-line hero-name-accent" data-text="ARAVIND">ARAVIND</span>
+    </h1>
+
+    <div class="hero-tag-row">
+      <span class="hero-tag">CO-FOUNDER</span>
+      <span class="hero-dot"></span>
+      <span class="hero-tag">AI ENGINEER</span>
+      <span class="hero-dot"></span>
+      <span class="hero-tag">GROWTH ARCHITECT</span>
+      <span class="hero-dot"></span>
+      <span class="hero-tag active-tag">NOT JUST A HIRE — A WHOLE TEAM</span>
+    </div>
+
+    <p class="hero-desc">
+      You don't hire a candidate. You deploy a system.<br>
+      Product. Tech. Ops. Marketing. Sales — every module runs.<br>
+      Project Manager @ TBG Digital, AU. Co-founded two companies. NVIDIA.<br>
+      One headcount. Full-stack impact.
+    </p>
+
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-num counter" data-target="2">0</div>
+        <div class="metric-label">COMPANIES<br>CO-FOUNDED</div>
       </div>
-      <div class="hero-eyebrow">// MULTI-AGENT HUMAN SYSTEM v2.6</div>
-      <h1 class="hero-name">
-        <span>GOPIKA</span>
-        <span class="hero-name-accent">ARAVIND</span>
-      </h1>
-      <div class="hero-tag-row">
-        <span class="hero-tag">CO-FOUNDER</span>
-        <span class="hero-dot"></span>
-        <span class="hero-tag">AI ENGINEER</span>
-        <span class="hero-dot"></span>
-        <span class="hero-tag">GROWTH ARCHITECT</span>
-        <span class="hero-dot"></span>
-        <span class="hero-tag active-tag">NOT JUST A HIRE — A WHOLE TEAM</span>
+      <div class="metric-div"></div>
+      <div class="metric">
+        <div class="metric-num counter" data-target="8">0</div>
+        <div class="metric-label">AGENT<br>MODULES</div>
       </div>
-      <p class="hero-desc">
-        You don't hire a candidate. You deploy a system.
-        Product, Tech, Ops, Marketing, Sales — every module runs.
-        Two companies co-founded. NVIDIA's autonomous vehicle datasets.
-        One headcount. Full-stack impact.
-      </p>
-      <div class="hero-metrics">
-        <div class="metric"><div class="metric-num counter" data-target="2">0</div><div class="metric-label">COMPANIES<br>FOUNDED</div></div>
-        <div class="metric-div"></div>
-        <div class="metric"><div class="metric-num counter" data-target="8">0</div><div class="metric-label">AGENT<br>MODULES</div></div>
-        <div class="metric-div"></div>
-        <div class="metric"><div class="metric-num">5+</div><div class="metric-label">INDUSTRIES<br>SHIPPED</div></div>
-        <div class="metric-div"></div>
-        <div class="metric"><div class="metric-num counter" data-target="50">0</div><div class="metric-label">TEAM<br>MANAGED</div></div>
+      <div class="metric-div"></div>
+      <div class="metric">
+        <div class="metric-num">5+</div>
+        <div class="metric-label">INDUSTRIES<br>SHIPPED</div>
       </div>
-      <div class="hero-actions">
-        <a href="#about" class="btn-primary">SEE MY AGENTS</a>
-        <a href="mailto:gopikaaravind2003@gmail.com" class="btn-ghost">CONTACT ME</a>
+      <div class="metric-div"></div>
+      <div class="metric">
+        <div class="metric-num counter" data-target="50">0</div>
+        <div class="metric-label">TEAM<br>MANAGED</div>
       </div>
     </div>
 
-    <div class="hero-photo-panel">
-      <div class="hero-photo-wrap">
-        <div class="photo-scan-line"></div>
-        <img src="https://raw.githubusercontent.com/iam-dglory/my-portfolio/main/gopika.png" alt="Gopika Aravind" class="hero-photo"/>
-        <div class="photo-corner tl"></div><div class="photo-corner tr"></div>
-        <div class="photo-corner bl"></div><div class="photo-corner br"></div>
-        <div class="photo-hud-top">
-          <span class="hud-tag">ID_VERIFIED</span>
-          <span class="hud-tag hud-green">ACTIVE</span>
-        </div>
-        <div class="photo-hud-bottom">
-          <div class="hud-row"><span class="hud-label">DESIGNATION</span><span class="hud-val">MULTI-AGENT OPERATOR</span></div>
-          <div class="hud-row"><span class="hud-label">CLEARANCE</span><span class="hud-val hud-cyan">FULL-STACK</span></div>
-          <div class="hud-row"><span class="hud-label">BASE</span><span class="hud-val">MELBOURNE_AU_001</span></div>
-        </div>
-      </div>
-      <div class="float-badge float-badge-1">
-        <svg viewBox="0 0 60 14" class="nvidia-svg"><text x="0" y="12" font-family="Arial Black,sans-serif" font-weight="900" font-size="13" fill="#76b900">NVIDIA</text></svg>
-        <div class="fb-label">AV DATASETS</div>
-      </div>
-      <div class="float-badge float-badge-2"><div class="fb-num">50+</div><div class="fb-label">TEAM MANAGED</div></div>
-      <div class="float-badge float-badge-3"><div class="fb-num">8</div><div class="fb-label">AGENT MODULES</div></div>
+    <div class="hero-actions">
+      <a href="#agents" class="btn-primary">BROWSE AGENTS</a>
+      <a href="mailto:gopikaaravind2003@gmail.com" class="btn-ghost">INITIATE CONTACT</a>
     </div>
   </div>
-  <div class="hero-scroll-hint"><div class="scroll-track"></div><span>SCROLL</span></div>
-</section>
 
-<!-- MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <span>CO-FOUNDER</span><span class="mq-sep">///</span><span>AI ENGINEER</span><span class="mq-sep">///</span><span>NVIDIA</span><span class="mq-sep">///</span><span>GROWTH MARKETER</span><span class="mq-sep">///</span><span>PROMPT ENGINEER</span><span class="mq-sep">///</span><span>ROBOTICS</span><span class="mq-sep">///</span><span>PRODUCT MANAGER</span><span class="mq-sep">///</span><span>OPERATIONS LEAD</span><span class="mq-sep">///</span><span>CREATIVE DIRECTOR</span><span class="mq-sep">///</span>
-    <span>CO-FOUNDER</span><span class="mq-sep">///</span><span>AI ENGINEER</span><span class="mq-sep">///</span><span>NVIDIA</span><span class="mq-sep">///</span><span>GROWTH MARKETER</span><span class="mq-sep">///</span><span>PROMPT ENGINEER</span><span class="mq-sep">///</span><span>ROBOTICS</span><span class="mq-sep">///</span><span>PRODUCT MANAGER</span><span class="mq-sep">///</span><span>OPERATIONS LEAD</span><span class="mq-sep">///</span><span>CREATIVE DIRECTOR</span><span class="mq-sep">///</span>
-  </div>
-</div>
-
-<!-- ══ SECTION 2 — ABOUT + AGENTS COMBINED ══ -->
-<section id="about" class="section">
-  <div class="about-split">
-    <!-- left: who I am -->
-    <div class="about-left sr sr-left">
-      <div class="section-label">[ 01 ] — WHO I AM</div>
-      <h2 class="section-heading">One Person.<br>Eight Roles.</h2>
-      <p class="about-body">
-        I'm Gopika — a co-founder, AI engineer, growth marketer, prompt engineer, robotics builder, ops lead, designer and sales person. I studied Electronics Engineering (CGPA 4.15/5) and I'm now pursuing a Master's in AI at RMIT Melbourne. I don't specialise in one thing. I ship everything.
-      </p>
-      <p class="about-body">
-        At <strong>NVIDIA</strong> I worked on LLM data validation pipelines for autonomous vehicle datasets. At <strong>AI Chroney</strong> I co-founded and ran all of product, sales, ops and marketing. At <strong>Raamya.ai</strong> I engineered conversational AI systems. I've built physical robots and shipped digital products.
-      </p>
-      <div class="about-chips">
-        <span>M.AI @ RMIT</span>
-        <span>B.E Electronics</span>
-        <span>CGPA 4.15 / 5</span>
-        <span>Melbourne, AU</span>
-      </div>
-    </div>
-
-    <!-- right: 8 agents compact grid -->
-    <div class="about-right">
-      <div class="section-label sr sr-right" style="margin-bottom:20px">[ 02 ] — AGENT ROSTER</div>
-      <div class="agents-compact">
-
-        <div class="ac-card sr sr-up" data-accent="cyan" style="--delay:0">
-          <div class="ac-top">
-            <svg viewBox="0 0 24 24" fill="none" class="ac-icon"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 7V5a2 2 0 014 0v2" stroke="currentColor" stroke-width="1.8"/><path d="M3 13h18" stroke="currentColor" stroke-width="1.5"/></svg>
-            <span class="ac-id">PM</span>
-          </div>
-          <div class="ac-name">Product Manager</div>
-          <div class="ac-org">AI Chroney</div>
-        </div>
-
-        <div class="ac-card sr sr-up" data-accent="green" style="--delay:1">
-          <div class="ac-top">
-            <svg viewBox="0 0 24 24" fill="none" class="ac-icon" style="color:#76b900"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/><path d="M3 12h3M18 12h3M12 3v3M12 18v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <span class="ac-id" style="color:#76b900">AI</span>
-          </div>
-          <div class="ac-name">AI / LLM Engineer</div>
-          <div class="ac-org" style="color:#76b900">NVIDIA</div>
-        </div>
-
-        <div class="ac-card sr sr-up" data-accent="amber" style="--delay:2">
-          <div class="ac-top">
-            <svg viewBox="0 0 24 24" fill="none" class="ac-icon"><polyline points="3,18 8,11 13,15 18,7 22,4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="18,4 22,4 22,8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            <span class="ac-id">GR</span>
-          </div>
-          <div class="ac-name">Growth Marketer</div>
-          <div class="ac-org">AI Chroney</div>
-        </div>
-
-        <div class="ac-card sr sr-up" data-accent="red" style="--delay:3">
-          <div class="ac-top">
-            <svg viewBox="0 0 24 24" fill="none" class="ac-icon"><path d="M4 6h16a2 2 0 012 2v10a2 2 0 01-2 2H8l-4 3v-3H4a2 2 0 01-2-2V8a2 2 0 012-2z" stroke="currentColor" stroke-width="1.8"/><path d="M8 12h3M15 12h1M8 15h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <span class="ac-id">PE</span>
-          </div>
-          <div class="ac-name">Prompt Engineer</div>
-          <div class="ac-org">Raamya.ai</div>
-        </div>
-
-        <div class="ac-card sr sr-up" data-accent="purple" style="--delay:4">
-          <div class="ac-top">
-            <svg viewBox="0 0 24 24" fill="none" class="ac-icon"><rect x="4" y="14" width="16" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="8" y="8" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="18" r="1.5" fill="currentColor"/><circle cx="16" cy="18" r="1.5" fill="currentColor"/><path d="M12 8V4M9 4h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            <span class="ac-id">RB</span>
-          </div>
-          <div class="ac-name">Embedded Engineer</div>
-          <div class="ac-org">Coamedkares</div>
-        </div>
-
-        <div class="ac-card sr sr-up" data-accent="cyan" style="--delay:5">
-          <div class="ac-top">
-            <svg viewBox="0 0 24 24" fill="none" class="ac-icon"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 12H4M20 12h-4M12 4V2M12 22v-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-            <span class="ac-id">OPS</span>
-          </div>
-          <div class="ac-name">Operations Lead</div>
-          <div class="ac-org">AI Chroney</div>
-        </div>
-
-        <div class="ac-card sr sr-up" data-accent="green" style="--delay:6">
-          <div class="ac-top">
-            <svg viewBox="0 0 24 24" fill="none" class="ac-icon"><rect x="3" y="3" width="8" height="10" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="4" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="17" width="8" height="4" rx="1" stroke="currentColor" stroke-width="1.8"/></svg>
-            <span class="ac-id">CD</span>
-          </div>
-          <div class="ac-name">Creative Director</div>
-          <div class="ac-org">Freelance</div>
-        </div>
-
-        <div class="ac-card sr sr-up" data-accent="amber" style="--delay:7">
-          <div class="ac-top">
-            <svg viewBox="0 0 24 24" fill="none" class="ac-icon"><path d="M20 12V22H4V12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 7H2v5h20V7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            <span class="ac-id">SL</span>
-          </div>
-          <div class="ac-name">Sales & Outreach</div>
-          <div class="ac-org">Superprof</div>
-        </div>
-
-      </div>
-    </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-track"></div>
+    <span>SCROLL</span>
   </div>
 </section>
 
-<!-- ══ SECTION 3 — EXPERIENCE + SKILLS SIDE BY SIDE ══ -->
-<section id="experience" class="section section-dark">
-  <div class="exp-skills-split">
+<!-- AGENTS -->
+<section id="agents" class="section">
+  <div class="section-intro">
+    <div class="section-label">[ 01 ] — AGENT ROSTER</div>
+    <h2 class="section-heading">I Am A Collection<br>Of Agents</h2>
+    <p class="section-sub">One hire. Eight capabilities. Zero redundant headcount for your company.</p>
+  </div>
 
-    <!-- EXPERIENCE -->
-    <div class="exp-col">
-      <div class="section-label sr sr-left">[ 03 ] — DEPLOYMENT LOG</div>
-      <h2 class="section-heading-sm sr sr-left">Experience</h2>
+  <div class="agents-grid">
 
-      <div class="exp-list-compact">
-
-        <div class="exc-item sr sr-left">
-          <div class="exc-left">
-            <div class="exc-node" style="border-color:var(--cyan);box-shadow:0 0 10px rgba(0,229,255,.4)"></div>
-            <div class="exc-line"></div>
-          </div>
-          <div class="exc-body">
-            <div class="exc-header">
-              <div>
-                <div class="exc-company">
-                  <svg viewBox="0 0 40 12" class="exc-logo-svg"><text x="0" y="10" font-family="Arial Black" font-weight="900" font-size="11" fill="#00e5ff">AI CHRONEY</text></svg>
-                </div>
-                <div class="exc-role">Co-Founder — Ops & Growth Lead</div>
-              </div>
-              <span class="exc-date">2024 — NOW</span>
-            </div>
-            <p class="exc-desc">Built AI SaaS from zero. Led all product, sales, marketing and ops. Managed 50+ team. WhatsApp recampaigning, SEO, content and B2B growth across 3 verticals.</p>
-            <div class="exc-tags"><span>PRODUCT</span><span>SALES</span><span>OPS</span><span>MARKETING</span></div>
-          </div>
+    <div class="agent-card" data-accent="cyan">
+      <div class="agent-card-inner">
+        <div class="agent-meta">
+          <span class="agent-id">AGENT_01</span>
+          <span class="agent-type">PRODUCT</span>
         </div>
-
-        <div class="exc-item sr sr-left">
-          <div class="exc-left">
-            <div class="exc-node" style="border-color:#76b900;box-shadow:0 0 10px rgba(118,185,0,.4)"></div>
-            <div class="exc-line"></div>
-          </div>
-          <div class="exc-body">
-            <div class="exc-header">
-              <div>
-                <div class="exc-company" style="color:#76b900">
-                  <svg viewBox="0 0 52 12" class="exc-logo-svg"><text x="0" y="10" font-family="Arial Black" font-weight="900" font-size="11" fill="#76b900">NVIDIA</text></svg>
-                </div>
-                <div class="exc-role">LLM Process Executive</div>
-              </div>
-              <span class="exc-date">2024</span>
-            </div>
-            <p class="exc-desc">LLM data validation and AI-driven workflow pipelines for NVIDIA's autonomous vehicle dataset infrastructure — next-gen self-driving systems.</p>
-            <div class="exc-tags"><span>LLMs</span><span>DATA VALIDATION</span><span>AI WORKFLOWS</span></div>
-          </div>
+        <div class="agent-icon-mark">PM</div>
+        <h3 class="agent-name">Product Manager</h3>
+        <p class="agent-org">AI Chroney — Operations & Growth Lead</p>
+        <p class="agent-desc">Co-founded AI Chroney targeting e-commerce, education and recruitment. Defined specs, shipped features, coordinated 50+ members, drove 0 to 1.</p>
+        <div class="agent-skills">
+          <span>ROADMAPPING</span>
+          <span>USER RESEARCH</span>
+          <span>0→1 BUILDING</span>
+          <span>OKRs</span>
         </div>
-
-        <div class="exc-item sr sr-left">
-          <div class="exc-left">
-            <div class="exc-node" style="border-color:var(--red);box-shadow:0 0 10px rgba(255,45,85,.3)"></div>
-            <div class="exc-line"></div>
-          </div>
-          <div class="exc-body">
-            <div class="exc-header">
-              <div>
-                <div class="exc-company" style="color:var(--red)">RAAMYA.AI</div>
-                <div class="exc-role">Communication Specialist — Prompt Engineer</div>
-              </div>
-              <span class="exc-date">2023–24</span>
-            </div>
-            <p class="exc-desc">Designed conversational AI flows, reduced LLM hallucinations via A/B testing, improved response quality metrics for production deployment.</p>
-            <div class="exc-tags"><span>PROMPT ENG</span><span>CONV. AI</span><span>LLM TUNING</span></div>
-          </div>
-        </div>
-
-        <div class="exc-item sr sr-left">
-          <div class="exc-left">
-            <div class="exc-node" style="border-color:var(--purple);box-shadow:0 0 10px rgba(174,82,244,.3)"></div>
-            <div class="exc-line"></div>
-          </div>
-          <div class="exc-body">
-            <div class="exc-header">
-              <div>
-                <div class="exc-company" style="color:var(--purple)">COAMEDKARES</div>
-                <div class="exc-role">Robotics Intern</div>
-              </div>
-              <span class="exc-date">2023</span>
-            </div>
-            <p class="exc-desc">Built autonomous robots on Raspberry Pi & Arduino — maze-solving bots with sensor integration, pathfinding and hardware-software deployment.</p>
-            <div class="exc-tags"><span>ROBOTICS</span><span>ARDUINO</span><span>RASPBERRY PI</span></div>
-          </div>
-        </div>
-
-        <div class="exc-item sr sr-left">
-          <div class="exc-left">
-            <div class="exc-node" style="border-color:var(--amber);box-shadow:0 0 10px rgba(255,179,0,.3)"></div>
-          </div>
-          <div class="exc-body">
-            <div class="exc-header">
-              <div>
-                <div class="exc-company" style="color:var(--amber)">SUPERPROF</div>
-                <div class="exc-role">Global Tutor — Technical & Academic</div>
-              </div>
-              <span class="exc-date">2022–23</span>
-            </div>
-            <p class="exc-desc">Delivered technical sessions to international students. Built client communication, presentation and retention skills across cultures and time zones.</p>
-            <div class="exc-tags"><span>COMMUNICATION</span><span>CLIENT RELATIONS</span></div>
-          </div>
-        </div>
-
       </div>
+      <div class="agent-glow"></div>
     </div>
 
-    <!-- SKILLS -->
-    <div class="skills-col">
-      <div class="section-label sr sr-right">[ 04 ] — CAPABILITIES</div>
-      <h2 class="section-heading-sm sr sr-right">Skills</h2>
-
-      <div class="skills-compact">
-
-        <div class="sc-group sr sr-right">
-          <div class="sc-group-header">
-            <svg viewBox="0 0 18 18" fill="none" class="sc-icon"><circle cx="9" cy="9" r="7" stroke="var(--cyan)" stroke-width="1.5"/><path d="M6 9l2 2 4-4" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <span>AI & MACHINE LEARNING</span>
-          </div>
-          <div class="sc-pills">
-            <span>LLMs & Prompt Engineering</span><span>AI Agent Systems</span><span>Python</span><span>TensorFlow / PyTorch</span><span>OpenCV & YOLO</span><span>NLP</span>
-          </div>
+    <div class="agent-card" data-accent="green">
+      <div class="agent-card-inner">
+        <div class="agent-meta">
+          <span class="agent-id">AGENT_02</span>
+          <span class="agent-type">ENGINEERING</span>
         </div>
-
-        <div class="sc-group sr sr-right">
-          <div class="sc-group-header">
-            <svg viewBox="0 0 18 18" fill="none" class="sc-icon"><rect x="2" y="8" width="14" height="8" rx="1" stroke="var(--green)" stroke-width="1.5"/><rect x="6" y="4" width="6" height="4" rx="1" stroke="var(--green)" stroke-width="1.5"/><circle cx="6" cy="14" r="1" fill="var(--green)"/><circle cx="12" cy="14" r="1" fill="var(--green)"/></svg>
-            <span>ENGINEERING & HARDWARE</span>
-          </div>
-          <div class="sc-pills">
-            <span>Raspberry Pi & Arduino</span><span>Embedded Systems</span><span>IoT & Robotics</span><span>MATLAB</span><span>Sensor Integration</span>
-          </div>
+        <div class="agent-icon-mark">AI</div>
+        <h3 class="agent-name">AI Engineer</h3>
+        <p class="agent-org">NVIDIA — LLM Process Executive</p>
+        <p class="agent-desc">Worked on LLM-related data validation and AI-driven workflow pipelines for NVIDIA's autonomous vehicle datasets — building the next decade of self-driving.</p>
+        <div class="agent-skills">
+          <span>LLMS</span>
+          <span>DATA VALIDATION</span>
+          <span>AI WORKFLOWS</span>
+          <span>PYTHON</span>
         </div>
-
-        <div class="sc-group sr sr-right">
-          <div class="sc-group-header">
-            <svg viewBox="0 0 18 18" fill="none" class="sc-icon"><polyline points="2,14 6,8 10,11 14,5 17,3" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>MARKETING & GROWTH</span>
-          </div>
-          <div class="sc-pills">
-            <span>PSEO & SEO</span><span>Google & Meta Ads</span><span>Social Media Growth</span><span>WhatsApp Automation</span><span>Lead Gen & CRM</span><span>Content Strategy</span>
-          </div>
-        </div>
-
-        <div class="sc-group sr sr-right">
-          <div class="sc-group-header">
-            <svg viewBox="0 0 18 18" fill="none" class="sc-icon"><rect x="2" y="2" width="6" height="6" rx="1" stroke="var(--purple)" stroke-width="1.5"/><rect x="10" y="2" width="6" height="6" rx="1" stroke="var(--purple)" stroke-width="1.5"/><rect x="2" y="10" width="6" height="6" rx="1" stroke="var(--purple)" stroke-width="1.5"/><rect x="10" y="10" width="6" height="6" rx="1" stroke="var(--purple)" stroke-width="1.5"/></svg>
-            <span>PRODUCT & DESIGN</span>
-          </div>
-          <div class="sc-pills">
-            <span>Product Management</span><span>Figma & UI/UX</span><span>Adobe Suite</span><span>Jira & Confluence</span><span>Stakeholder Management</span>
-          </div>
-        </div>
-
       </div>
+      <div class="agent-glow"></div>
+    </div>
+
+    <div class="agent-card" data-accent="amber">
+      <div class="agent-card-inner">
+        <div class="agent-meta">
+          <span class="agent-id">AGENT_03</span>
+          <span class="agent-type">GROWTH</span>
+        </div>
+        <div class="agent-icon-mark">GR</div>
+        <h3 class="agent-name">Growth Marketer</h3>
+        <p class="agent-org">AI Chroney — Marketing & Social Strategy</p>
+        <p class="agent-desc">Built full content systems — 30-day calendars, SEO pipelines, WhatsApp recampaigning with automated follow-up sequences and lead generation at scale.</p>
+        <div class="agent-skills">
+          <span>SEO / PSEO</span>
+          <span>META ADS</span>
+          <span>SOCIAL GROWTH</span>
+          <span>AUTOMATION</span>
+        </div>
+      </div>
+      <div class="agent-glow"></div>
+    </div>
+
+    <div class="agent-card" data-accent="red">
+      <div class="agent-card-inner">
+        <div class="agent-meta">
+          <span class="agent-id">AGENT_04</span>
+          <span class="agent-type">PROMPT ENGINEERING</span>
+        </div>
+        <div class="agent-icon-mark">PE</div>
+        <h3 class="agent-name">Prompt Engineer</h3>
+        <p class="agent-org">Raamya.ai — Communication Specialist</p>
+        <p class="agent-desc">Designed and optimised conversational flows. Reduced LLM error rates, improved response quality, aligned AI outputs with production-grade user intent.</p>
+        <div class="agent-skills">
+          <span>PROMPT DESIGN</span>
+          <span>CONV. AI</span>
+          <span>LLM TUNING</span>
+          <span>UX WRITING</span>
+        </div>
+      </div>
+      <div class="agent-glow"></div>
+    </div>
+
+    <div class="agent-card" data-accent="purple">
+      <div class="agent-card-inner">
+        <div class="agent-meta">
+          <span class="agent-id">AGENT_05</span>
+          <span class="agent-type">HARDWARE</span>
+        </div>
+        <div class="agent-icon-mark">RB</div>
+        <h3 class="agent-name">Embedded Engineer</h3>
+        <p class="agent-org">Coamedkares — Robotics Intern</p>
+        <p class="agent-desc">Built maze-solving bots on Raspberry Pi and Arduino. Sensor integration, automation logic, hardware-software systems for autonomous operation.</p>
+        <div class="agent-skills">
+          <span>ARDUINO</span>
+          <span>RASPBERRY PI</span>
+          <span>IOT</span>
+          <span>SENSORS</span>
+        </div>
+      </div>
+      <div class="agent-glow"></div>
+    </div>
+
+    <div class="agent-card" data-accent="cyan">
+      <div class="agent-card-inner">
+        <div class="agent-meta">
+          <span class="agent-id">AGENT_06</span>
+          <span class="agent-type">PROJECT MANAGEMENT</span>
+        </div>
+        <div class="agent-icon-mark">PM</div>
+        <h3 class="agent-name">Project Manager</h3>
+        <p class="agent-org">TBG Digital — Melbourne, AU</p>
+        <p class="agent-desc">Lead digital teams of developers and designers across concurrent AU client projects. End-to-end delivery from onboarding to review, website development and marketing ops.</p>
+        <div class="agent-skills">
+          <span>TEAM LEADERSHIP</span>
+          <span>CLIENT DELIVERY</span>
+          <span>PROJECT TRACKING</span>
+          <span>WEB PROJECTS</span>
+        </div>
+      </div>
+      <div class="agent-glow"></div>
+    </div>
+
+    <div class="agent-card" data-accent="green">
+      <div class="agent-card-inner">
+        <div class="agent-meta">
+          <span class="agent-id">AGENT_07</span>
+          <span class="agent-type">CREATIVE</span>
+        </div>
+        <div class="agent-icon-mark">CD</div>
+        <h3 class="agent-name">Creative Director</h3>
+        <p class="agent-org">Freelance — Brand & Visual Design</p>
+        <p class="agent-desc">Figma, Adobe Suite, Canva mastery. Designed brand assets, pitch decks, social creatives and product UIs with systems-level aesthetic thinking.</p>
+        <div class="agent-skills">
+          <span>FIGMA</span>
+          <span>ADOBE</span>
+          <span>UI / UX</span>
+          <span>BRAND SYSTEMS</span>
+        </div>
+      </div>
+      <div class="agent-glow"></div>
+    </div>
+
+    <div class="agent-card" data-accent="amber">
+      <div class="agent-card-inner">
+        <div class="agent-meta">
+          <span class="agent-id">AGENT_08</span>
+          <span class="agent-type">SALES</span>
+        </div>
+        <div class="agent-icon-mark">SL</div>
+        <h3 class="agent-name">Sales & Outreach</h3>
+        <p class="agent-org">Superprof — Global Tutor & Client Relations</p>
+        <p class="agent-desc">Client onboarding, pitch presentations to global students, relationship management. Built communication frameworks that converted leads to revenue.</p>
+        <div class="agent-skills">
+          <span>B2B SALES</span>
+          <span>OUTREACH</span>
+          <span>PITCH</span>
+          <span>RETENTION</span>
+        </div>
+      </div>
+      <div class="agent-glow"></div>
     </div>
 
   </div>
 </section>
 
-<!-- ══ SECTION 4 — PROJECTS ══ -->
+<!-- TERMINAL -->
+<section id="terminal" class="terminal-section">
+  <div class="terminal-container">
+    <div class="terminal-chrome">
+      <div class="terminal-dots">
+        <span class="t-dot td-close"></span>
+        <span class="t-dot td-min"></span>
+        <span class="t-dot td-max"></span>
+      </div>
+      <span class="terminal-title-bar">gopika@multiagent — query</span>
+    </div>
+    <div class="terminal-body" id="terminal-body">
+      <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd" id="t-typing-1"></span><span class="t-caret" id="t-caret-1"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="section-intro">
+    <div class="section-label">[ 02 ] — DEPLOYMENT LOG</div>
+    <h2 class="section-heading">Experience</h2>
+    <p class="section-sub">Full operational history across six engagements.</p>
+  </div>
+
+  <div class="exp-list">
+
+    <div class="exp-item" data-idx="00">
+      <div class="exp-connector">
+        <div class="exp-node" style="border-color:var(--amber);box-shadow:0 0 12px rgba(255,179,0,.5)"></div>
+        <div class="exp-line"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-top">
+          <div class="exp-title-block">
+            <div class="exp-company-logo">
+              <svg viewBox="0 0 28 28" fill="none" class="exp-logo-svg"><rect x="2" y="2" width="24" height="24" rx="4" stroke="var(--amber)" stroke-width="2"/><path d="M7 14h14M7 9h8M7 19h10" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"/></svg>
+              <span style="color:var(--amber)">TBG DIGITAL</span>
+            </div>
+            <h3 class="exp-role">Project Manager — Digital Team</h3>
+          </div>
+          <div class="exp-date">2025 — PRESENT</div>
+        </div>
+        <ul class="exp-points">
+          <li>Lead and coordinate a digital team of developers and designers — assigning tasks, reviewing progress, and enforcing quality and deadline standards across all active projects</li>
+          <li>Manage multiple concurrent Australian client projects end-to-end, from onboarding and requirement gathering through to delivery and final review</li>
+          <li>Maintain project trackers and documentation, coordinate approvals, and support day-to-day marketing operations across a live client portfolio</li>
+          <li>Coordinate website development for a portfolio of Australian small businesses, gathering content and functionality requirements and managing revisions between clients and developers</li>
+        </ul>
+        <div class="exp-tags">
+          <span>PROJECT MANAGEMENT</span><span>DIGITAL TEAM LEAD</span><span>CLIENT DELIVERY</span><span>WEB DEVELOPMENT</span><span>MARKETING OPS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item" data-idx="01">
+      <div class="exp-connector">
+        <div class="exp-node"></div>
+        <div class="exp-line"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-top">
+          <div class="exp-title-block">
+            <h3 class="exp-role">Co-Founder / Operations & Growth Lead</h3>
+            <div class="exp-company">AI CHRONEY — aichroney.com</div>
+          </div>
+          <div class="exp-date">2024 — PRESENT</div>
+        </div>
+        <ul class="exp-points">
+          <li>Built and scaled an AI SaaS platform targeting e-commerce, education and recruitment verticals</li>
+          <li>Led marketing, outreach and growth from zero — content strategy, SEO, social media campaigns</li>
+          <li>Coordinated 50+ member team ensuring campaign execution and workflow delivery</li>
+          <li>Designed WhatsApp recampaigning system with automated follow-up sequences for lead databases</li>
+          <li>Managed client onboarding, relationship pipelines and B2B communications</li>
+        </ul>
+        <div class="exp-tags">
+          <span>PRODUCT</span><span>GROWTH</span><span>OPERATIONS</span><span>MARKETING</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item" data-idx="02">
+      <div class="exp-connector">
+        <div class="exp-node"></div>
+        <div class="exp-line"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-top">
+          <div class="exp-title-block">
+            <h3 class="exp-role">LLM Process Executive</h3>
+            <div class="exp-company">NVIDIA — via Spectrum</div>
+          </div>
+          <div class="exp-date">2024</div>
+        </div>
+        <ul class="exp-points">
+          <li>Worked on AI and LLM-related process workflows for NVIDIA's data infrastructure</li>
+          <li>Handled AI-driven data validation, structured datasets and quality assurance processes</li>
+          <li>Contributed to autonomous vehicle dataset pipelines powering next-generation self-driving systems</li>
+          <li>Supported technical process optimisation in high-velocity, quality-critical environments</li>
+        </ul>
+        <div class="exp-tags">
+          <span>LLMs</span><span>DATA VALIDATION</span><span>AI WORKFLOWS</span><span>AUTONOMOUS SYSTEMS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item" data-idx="03">
+      <div class="exp-connector">
+        <div class="exp-node"></div>
+        <div class="exp-line"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-top">
+          <div class="exp-title-block">
+            <h3 class="exp-role">Communication Specialist — Prompt Engineer</h3>
+            <div class="exp-company">RAAMYA.AI</div>
+          </div>
+          <div class="exp-date">2023 — 2024</div>
+        </div>
+        <ul class="exp-points">
+          <li>Designed and optimised conversational AI flows focused on user engagement quality</li>
+          <li>Reduced LLM hallucination rates through iterative prompt refinement and A/B testing</li>
+          <li>Improved interaction quality metrics and aligned AI outputs with product goals</li>
+        </ul>
+        <div class="exp-tags">
+          <span>PROMPT ENGINEERING</span><span>CONVERSATIONAL AI</span><span>LLM OPTIMISATION</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item" data-idx="04">
+      <div class="exp-connector">
+        <div class="exp-node"></div>
+        <div class="exp-line"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-top">
+          <div class="exp-title-block">
+            <h3 class="exp-role">Robotics Intern</h3>
+            <div class="exp-company">COAMEDKARES</div>
+          </div>
+          <div class="exp-date">2023</div>
+        </div>
+        <ul class="exp-points">
+          <li>Built robotics systems using Raspberry Pi and Arduino platforms from hardware to software</li>
+          <li>Developed autonomous maze-solving bots with sensor integration and pathfinding logic</li>
+          <li>Performed testing, debugging and hardware-software integration for production deployment</li>
+        </ul>
+        <div class="exp-tags">
+          <span>ROBOTICS</span><span>EMBEDDED SYSTEMS</span><span>ARDUINO</span><span>RASPBERRY PI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item" data-idx="05">
+      <div class="exp-connector">
+        <div class="exp-node"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-top">
+          <div class="exp-title-block">
+            <h3 class="exp-role">Global Tutor — Technical & Academic</h3>
+            <div class="exp-company">SUPERPROF</div>
+          </div>
+          <div class="exp-date">2022 — 2023</div>
+        </div>
+        <ul class="exp-points">
+          <li>Delivered technical and academic sessions to international students across time zones</li>
+          <li>Built strong client communication, presentation and retention skills across cultures</li>
+        </ul>
+        <div class="exp-tags">
+          <span>COMMUNICATION</span><span>CLIENT RELATIONS</span><span>TEACHING</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
 <section id="projects" class="section">
-  <div class="section-intro sr sr-up">
-    <div class="section-label">[ 05 ] — BUILDS</div>
+  <div class="section-intro">
+    <div class="section-label">[ 03 ] — BUILDS</div>
     <h2 class="section-heading">Projects</h2>
     <p class="section-sub">Systems shipped. Real-world problems solved.</p>
   </div>
-  <div class="projects-tight">
 
-    <div class="pt-card pt-featured sr sr-up">
-      <div class="pt-num">001</div>
-      <div class="pt-top">
-        <div>
-          <div class="pt-cat">PRODUCT — SALES — OPS — MARKETING</div>
-          <span class="pt-badge">MY ROLE: NON-TECH</span>
-        </div>
+  <div class="projects-grid">
+
+    <div class="proj-card proj-featured">
+      <div class="proj-num">001</div>
+      <div class="proj-category">AI — SAAS — GROWTH</div>
+      <h3 class="proj-name">AI Chroney Platform</h3>
+      <p class="proj-desc">Full AI SaaS platform with WhatsApp bulk recampaigning, automated lead follow-ups and vertical-specific tools. Built from zero — product, tech, growth and ops in one build.</p>
+      <div class="proj-stack">
+        <span>AI AGENTS</span>
+        <span>WHATSAPP API</span>
+        <span>GROWTH AUTOMATION</span>
+        <span>SAAS ARCHITECTURE</span>
       </div>
-      <h3 class="pt-name">AI Chroney — Co-Founded</h3>
-      <p class="pt-desc">Co-founded AI Chroney from zero. Led product strategy, sales outreach, all operations and full marketing execution — content, SEO, WhatsApp recampaigning, lead pipelines and B2B client management across e-commerce, education and recruitment.</p>
-      <div class="pt-stack"><span>PRODUCT STRATEGY</span><span>SALES</span><span>OPERATIONS</span><span>SEO</span><span>WHATSAPP AUTOMATION</span></div>
+      <div class="proj-line-decor"></div>
     </div>
 
-    <div class="pt-card sr sr-up">
-      <div class="pt-num">002</div>
-      <div class="pt-cat">COMPUTER VISION — HARDWARE</div>
-      <h3 class="pt-name">Smart Kiosk System</h3>
-      <p class="pt-desc">Raspberry Pi interactive display with AI voice interaction and real-time data visualisation for public environments.</p>
-      <div class="pt-stack"><span>RASPBERRY PI</span><span>OPENCV</span><span>VOICE AI</span></div>
-    </div>
-
-    <div class="pt-card sr sr-up">
-      <div class="pt-num">003</div>
-      <div class="pt-cat">ML — COMPUTER VISION</div>
-      <h3 class="pt-name">YOLO Object Detection</h3>
-      <p class="pt-desc">Computer vision model for real-world object recognition applied to robotics and autonomous decision-making pipelines.</p>
-      <div class="pt-stack"><span>YOLO</span><span>TENSORFLOW</span><span>OPENCV</span></div>
-    </div>
-
-    <div class="pt-card sr sr-up">
-      <div class="pt-num">004</div>
-      <div class="pt-cat">ROBOTICS — IOT</div>
-      <h3 class="pt-name">Maze Solving Bot</h3>
-      <p class="pt-desc">Sensor-integrated autonomous robot with Arduino pathfinding for real-time navigation and obstacle avoidance.</p>
-      <div class="pt-stack"><span>ARDUINO</span><span>SENSORS</span><span>EMBEDDED C</span></div>
-    </div>
-
-    <div class="pt-card sr sr-up">
-      <div class="pt-num">005</div>
-      <div class="pt-cat">GEOSPATIAL — AI</div>
-      <h3 class="pt-name">Map View Nexus</h3>
-      <p class="pt-desc">Intelligent geospatial mapping system with AI for real-time contextual location-based intelligence.</p>
-      <div class="pt-stack"><span>MAPS API</span><span>JAVASCRIPT</span><span>AI</span></div>
-    </div>
-
-    <div class="pt-card sr sr-up">
-      <div class="pt-num">006</div>
-      <div class="pt-cat">EDTECH — AI</div>
-      <h3 class="pt-name">SkillBridge Platform</h3>
-      <p class="pt-desc">AI platform bridging skill gaps with personalised learning, automated assessments and intelligent recommendations.</p>
-      <div class="pt-stack"><span>LLMs</span><span>EDTECH</span><span>AI AGENTS</span></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══ SECTION 5 — TERMINAL + CONTACT ══ -->
-<section id="contact" class="section section-dark">
-  <div class="terminal-contact-split">
-
-    <!-- terminal -->
-    <div class="tc-terminal sr sr-left">
-      <div class="terminal-container">
-        <div class="terminal-chrome">
-          <div class="terminal-dots"><span class="t-dot td-close"></span><span class="t-dot td-min"></span><span class="t-dot td-max"></span></div>
-          <span class="terminal-title-bar">gopika@multiagent — live query</span>
-        </div>
-        <div class="terminal-body" id="terminal-body"></div>
+    <div class="proj-card">
+      <div class="proj-num">002</div>
+      <div class="proj-category">COMPUTER VISION — HARDWARE</div>
+      <h3 class="proj-name">Smart Kiosk System</h3>
+      <p class="proj-desc">Raspberry Pi OS-based interactive display with AI-powered voice interaction and real-time data visualisation for public deployment environments.</p>
+      <div class="proj-stack">
+        <span>RASPBERRY PI</span>
+        <span>PYTHON</span>
+        <span>OPENCV</span>
+        <span>VOICE AI</span>
       </div>
     </div>
 
-    <!-- contact -->
-    <div class="tc-contact sr sr-right">
-      <div class="section-label">[ 06 ] — DEPLOY</div>
-      <h2 class="section-heading-sm">Ready To<br><span style="color:var(--cyan)">Deploy All Agents?</span></h2>
-      <p class="contact-body">You don't need five hires. One person who thinks like a PM, builds like an engineer, sells like a founder and executes like a full team.</p>
-      <a href="mailto:gopikaaravind2003@gmail.com" class="btn-primary" style="margin-bottom:32px;display:inline-flex">INITIATE CONTACT</a>
+    <div class="proj-card">
+      <div class="proj-num">003</div>
+      <div class="proj-category">ML — COMPUTER VISION</div>
+      <h3 class="proj-name">YOLO Object Detection</h3>
+      <p class="proj-desc">AI-based computer vision model for real-world object recognition. Applied to robotics and autonomous decision-making pipelines with high accuracy benchmarks.</p>
+      <div class="proj-stack">
+        <span>YOLO</span>
+        <span>TENSORFLOW</span>
+        <span>OPENCV</span>
+        <span>PYTHON</span>
+      </div>
+    </div>
 
-      <div class="contact-links">
-        <a href="mailto:gopikaaravind2003@gmail.com" class="contact-row">
-          <div class="cr-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8l8 5 8-5" stroke="currentColor" stroke-width="1.5"/></svg></div>
-          <div class="cr-text"><span class="cr-label">EMAIL</span><span class="cr-value">gopikaaravind2003@gmail.com</span></div>
-          <span class="cr-arrow">&#8594;</span>
-        </a>
-        <a href="https://github.com/iam-dglory" target="_blank" rel="noopener" class="contact-row">
-          <div class="cr-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2C5.6 2 2 5.7 2 10.2c0 3.6 2.3 6.7 5.6 7.8.4.1.5-.2.5-.4v-1.4c-2.3.5-2.8-1.1-2.8-1.1-.4-1-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8 0 1.2.8 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.7-.9-3.7-4.1 0-.9.3-1.7.9-2.3-.1-.2-.4-1.1.1-2.3 0 0 .7-.2 2.4.9a8.4 8.4 0 014.4 0c1.7-1.1 2.4-.9 2.4-.9.5 1.2.2 2.1.1 2.3.6.6.9 1.4.9 2.3 0 3.2-1.9 3.9-3.7 4.1.3.3.5.8.5 1.6v2.4c0 .2.1.5.5.4 3.3-1.1 5.6-4.2 5.6-7.8C18 5.7 14.4 2 10 2z" stroke="currentColor" stroke-width="1.2"/></svg></div>
-          <div class="cr-text"><span class="cr-label">GITHUB</span><span class="cr-value">github.com/iam-dglory</span></div>
-          <span class="cr-arrow">&#8594;</span>
-        </a>
-        <a href="https://behance.net/gopikaaravind" target="_blank" rel="noopener" class="contact-row">
-          <div class="cr-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 10h3a2 2 0 000-4H6v8h3.5a2 2 0 000-4H6M12 7h5M12.5 11h4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div class="cr-text"><span class="cr-label">BEHANCE</span><span class="cr-value">behance.net/gopikaaravind</span></div>
-          <span class="cr-arrow">&#8594;</span>
-        </a>
-        <a href="tel:+61434645028" class="contact-row">
-          <div class="cr-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M4 3h4l2 4.5-2 1.5a10 10 0 003 3l1.5-2L17 12v4a2 2 0 01-2 2A14 14 0 012 5a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5"/></svg></div>
-          <div class="cr-text"><span class="cr-label">PHONE — MELBOURNE</span><span class="cr-value">+61 434 645 028</span></div>
-          <span class="cr-arrow">&#8594;</span>
-        </a>
+    <div class="proj-card">
+      <div class="proj-num">004</div>
+      <div class="proj-category">ROBOTICS — IOT</div>
+      <h3 class="proj-name">Maze Solving Bot</h3>
+      <p class="proj-desc">Sensor-integrated autonomous robotics project. Pathfinding algorithms on Arduino with real-time environment navigation and obstacle avoidance logic.</p>
+      <div class="proj-stack">
+        <span>ARDUINO</span>
+        <span>SENSORS</span>
+        <span>EMBEDDED C</span>
+        <span>PATHFINDING</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">005</div>
+      <div class="proj-category">GEOSPATIAL — AI</div>
+      <h3 class="proj-name">Map View Nexus</h3>
+      <p class="proj-desc">Intelligent location and data mapping system for real-time geospatial visualisation, integrated with AI for contextual location-based intelligence.</p>
+      <div class="proj-stack">
+        <span>MAPS API</span>
+        <span>JAVASCRIPT</span>
+        <span>AI</span>
+        <span>DATA VIZ</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">006</div>
+      <div class="proj-category">EDTECH — AI</div>
+      <h3 class="proj-name">SkillBridge Platform</h3>
+      <p class="proj-desc">AI-supported engagement platform bridging skill gaps. Personalised learning pathways, automated assessments and intelligent recommendations at scale.</p>
+      <div class="proj-stack">
+        <span>LLMS</span>
+        <span>EDTECH</span>
+        <span>PERSONALISATION</span>
+        <span>AI AGENTS</span>
       </div>
     </div>
 
   </div>
 </section>
 
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="section-intro">
+    <div class="section-label">[ 04 ] — CAPABILITIES</div>
+    <h2 class="section-heading">Skills Matrix</h2>
+    <p class="section-sub">Full-stack capability across every agent module.</p>
+  </div>
+
+  <div class="skills-categories">
+
+    <div class="skill-cat">
+      <div class="skill-cat-header">
+        <span class="cat-id">01</span>
+        <span class="cat-name">AI & MACHINE LEARNING</span>
+        <div class="cat-line"></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row">LLMs &amp; Prompt Engineering</div>
+        <div class="skill-row">AI Agent Systems</div>
+        <div class="skill-row">Python &amp; Automation</div>
+        <div class="skill-row">TensorFlow / PyTorch</div>
+        <div class="skill-row">OpenCV &amp; YOLO</div>
+        <div class="skill-row">NLP &amp; Conversational AI</div>
+      </div>
+    </div>
+
+    <div class="skill-cat">
+      <div class="skill-cat-header">
+        <span class="cat-id">02</span>
+        <span class="cat-name">ENGINEERING & HARDWARE</span>
+        <div class="cat-line"></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row">Raspberry Pi &amp; Arduino</div>
+        <div class="skill-row">Embedded Systems &amp; IoT</div>
+        <div class="skill-row">Robotics &amp; Automation</div>
+        <div class="skill-row">MATLAB &amp; Circuit Design</div>
+        <div class="skill-row">Sensor Integration</div>
+        <div class="skill-row">Technical Documentation</div>
+      </div>
+    </div>
+
+    <div class="skill-cat">
+      <div class="skill-cat-header">
+        <span class="cat-id">03</span>
+        <span class="cat-name">MARKETING & GROWTH</span>
+        <div class="cat-line"></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row">PSEO &amp; Content Strategy</div>
+        <div class="skill-row">Google Ads &amp; Meta Ads</div>
+        <div class="skill-row">Social Media Growth</div>
+        <div class="skill-row">WhatsApp Automation</div>
+        <div class="skill-row">Lead Generation &amp; CRM</div>
+        <div class="skill-row">Short-form Video Editing</div>
+      </div>
+    </div>
+
+    <div class="skill-cat">
+      <div class="skill-cat-header">
+        <span class="cat-id">04</span>
+        <span class="cat-name">PRODUCT & DESIGN</span>
+        <div class="cat-line"></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row">Product Management</div>
+        <div class="skill-row">Figma &amp; UI/UX Design</div>
+        <div class="skill-row">Canva &amp; Adobe Suite</div>
+        <div class="skill-row">Jira &amp; Confluence</div>
+        <div class="skill-row">Workflow Automation</div>
+        <div class="skill-row">Stakeholder Management</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-section">
+  <div class="contact-split">
+    <div class="contact-left">
+      <div class="section-label">[ 05 ] — DEPLOY</div>
+      <h2 class="contact-heading">Ready To Deploy<br><span class="contact-heading-accent">All Agents?</span></h2>
+      <p class="contact-body">You don't need five hires. You need one person who thinks like a PM, builds like an engineer, sells like a founder, and executes like a full team. That's the system.</p>
+      <a href="mailto:gopikaaravind2003@gmail.com" class="btn-primary">INITIATE CONTACT</a>
+    </div>
+    <div class="contact-right">
+      <a href="mailto:gopikaaravind2003@gmail.com" class="contact-row">
+        <span class="cr-label">EMAIL</span>
+        <span class="cr-value">gopikaaravind2003@gmail.com</span>
+        <span class="cr-arrow">—&gt;</span>
+      </a>
+      <a href="https://github.com/iam-dglory" target="_blank" rel="noopener" class="contact-row">
+        <span class="cr-label">GITHUB</span>
+        <span class="cr-value">github.com/iam-dglory</span>
+        <span class="cr-arrow">—&gt;</span>
+      </a>
+      <a href="https://behance.net/gopikaaravind" target="_blank" rel="noopener" class="contact-row">
+        <span class="cr-label">BEHANCE</span>
+        <span class="cr-value">behance.net/gopikaaravind</span>
+        <span class="cr-arrow">—&gt;</span>
+      </a>
+      <a href="tel:+61434645028" class="contact-row">
+        <span class="cr-label">PHONE / MELBOURNE</span>
+        <span class="cr-value">+61 434 645 028</span>
+        <span class="cr-arrow">—&gt;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-logo">GOPIKA.EXE</div>
-    <div class="footer-copy"><span>2026</span><span class="f-sep">—</span><span>GOPIKA ARAVIND</span><span class="f-sep">—</span><span>MELBOURNE, AU</span></div>
-    <div class="footer-status"><span class="status-pulse"></span><span>AVAILABLE</span></div>
+    <div class="footer-copy">
+      <span>2026</span>
+      <span class="f-sep">—</span>
+      <span>GOPIKA ARAVIND</span>
+      <span class="f-sep">—</span>
+      <span>MULTI-AGENT HUMAN SYSTEM</span>
+      <span class="f-sep">—</span>
+      <span>MELBOURNE, AU</span>
+    </div>
+    <div class="footer-status">
+      <span class="status-pulse"></span>
+      <span>AVAILABLE</span>
+    </div>
   </div>
 </footer>
 
