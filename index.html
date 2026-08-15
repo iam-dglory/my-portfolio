@@ -48,6 +48,7 @@
   <canvas id="hero-canvas"></canvas>
   <div class="hero-noise"></div>
 
+  <div class="hero-layout">
   <div class="hero-content">
     <div class="hero-status-bar">
       <span class="status-pulse"></span>
@@ -109,6 +110,33 @@
       <a href="mailto:gopikaaravind2003@gmail.com" class="btn-ghost">INITIATE CONTACT</a>
     </div>
   </div>
+
+  <!-- PHOTO PANEL -->
+  <div class="hero-photo-panel">
+    <div class="hero-photo-wrap">
+      <div class="photo-scan-line"></div>
+      <img src="https://raw.githubusercontent.com/iam-dglory/my-portfolio/main/gopika.png" alt="Gopika Aravind" class="hero-photo"/>
+      <div class="photo-corner tl"></div><div class="photo-corner tr"></div>
+      <div class="photo-corner bl"></div><div class="photo-corner br"></div>
+      <div class="photo-hud-top">
+        <span class="hud-tag">ID_VERIFIED</span>
+        <span class="hud-tag hud-green">ACTIVE</span>
+      </div>
+      <div class="photo-hud-bottom">
+        <div class="hud-row"><span class="hud-label">DESIGNATION</span><span class="hud-val">MULTI-AGENT OPERATOR</span></div>
+        <div class="hud-row"><span class="hud-label">CLEARANCE</span><span class="hud-val hud-cyan">FULL-STACK</span></div>
+        <div class="hud-row"><span class="hud-label">BASE</span><span class="hud-val">MELBOURNE_AU_001</span></div>
+      </div>
+    </div>
+    <div class="float-badge float-badge-1">
+      <svg viewBox="0 0 60 14" class="nvidia-svg"><text x="0" y="12" font-family="Arial Black,sans-serif" font-weight="900" font-size="13" fill="#76b900">NVIDIA</text></svg>
+      <div class="fb-label">AV DATASETS</div>
+    </div>
+    <div class="float-badge float-badge-2"><div class="fb-num">50+</div><div class="fb-label">TEAM MANAGED</div></div>
+    <div class="float-badge float-badge-3"><div class="fb-num">YC</div><div class="fb-label">BUILDING DAILY</div></div>
+  </div>
+
+  </div><!-- end hero-layout -->
 
   <div class="hero-scroll-hint">
     <div class="scroll-track"></div>
@@ -473,87 +501,175 @@
   <div class="section-intro">
     <div class="section-label">[ 03 ] — BUILDS</div>
     <h2 class="section-heading">Projects</h2>
-    <p class="section-sub">Systems shipped. Real-world problems solved.</p>
+    <p class="section-sub">Building one product a day until YC. Every idea shipped, not just thought.</p>
+  </div>
+
+  <!-- YC STREAK BANNER -->
+  <div class="yc-streak-banner">
+    <div class="yc-streak-inner">
+      <div class="yc-icon">
+        <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#f26522"/><path d="M16 8l2.8 5.6H24l-4.6 3.4 1.8 5.6L16 19.2l-5.2 3.4 1.8-5.6L8 13.6h5.2L16 8z" fill="#fff"/></svg>
+      </div>
+      <div class="yc-streak-text">
+        <div class="yc-streak-title">YC DREAM STREAK</div>
+        <div class="yc-streak-sub">Building one product idea every day until I make it to Y Combinator</div>
+      </div>
+      <div class="yc-streak-count">
+        <span class="yc-num">10+</span>
+        <span class="yc-label">PRODUCTS BUILT</span>
+      </div>
+    </div>
   </div>
 
   <div class="projects-grid">
 
-    <div class="proj-card proj-featured">
+    <!-- YC STREAK PROJECTS -->
+    <div class="proj-card proj-featured proj-yc">
       <div class="proj-num">001</div>
-      <div class="proj-category">AI — SAAS — GROWTH</div>
-      <h3 class="proj-name">AI Chroney Platform</h3>
-      <p class="proj-desc">Full AI SaaS platform with WhatsApp bulk recampaigning, automated lead follow-ups and vertical-specific tools. Built from zero — product, tech, growth and ops in one build.</p>
+      <div class="proj-category-wrap">
+        <span class="proj-category">B2B INTELLIGENCE — MAPS — FULL STACK</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">NEXUS — Business Intelligence Map</h3>
+      <p class="proj-desc">B2B geospatial intelligence platform. Interactive world map with 681 seeded global companies, pulsing status markers, heatmap mode, company comparison table and B2B connection modal with 8 purpose types. Built with Next.js 14, PostGIS, Redis, Socket.io and Leaflet.</p>
       <div class="proj-stack">
-        <span>AI AGENTS</span>
-        <span>WHATSAPP API</span>
-        <span>GROWTH AUTOMATION</span>
-        <span>SAAS ARCHITECTURE</span>
+        <span>NEXT.JS 14</span><span>POSTGRESQL + POSTGIS</span><span>REDIS</span><span>SOCKET.IO</span><span>LEAFLET</span><span>ZUSTAND</span>
       </div>
       <div class="proj-line-decor"></div>
     </div>
 
-    <div class="proj-card">
+    <div class="proj-card proj-yc">
       <div class="proj-num">002</div>
+      <div class="proj-category-wrap">
+        <span class="proj-category">AI — PREDICTION MARKETS</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">Football Polymarket</h3>
+      <p class="proj-desc">LMSR-priced match prediction terminal for football. Real-money-style prediction markets with automated odds, live market making and a full betting terminal UI. Deployed on GitHub Pages.</p>
+      <div class="proj-stack">
+        <span>LMSR PRICING</span><span>JAVASCRIPT</span><span>PREDICTION MARKETS</span><span>GITHUB PAGES</span>
+      </div>
+    </div>
+
+    <div class="proj-card proj-yc">
+      <div class="proj-num">003</div>
+      <div class="proj-category-wrap">
+        <span class="proj-category">AI — EDTECH — HISTORY</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">Legends Brain</h3>
+      <p class="proj-desc">Claude API-powered chat app with 80+ historical figure personas — Einstein, Cleopatra, Tesla and more. Custom SVG avatars, TF-IDF relevance scoring, multi-turn memory and subscription tiers. Live on Netlify.</p>
+      <div class="proj-stack">
+        <span>CLAUDE API</span><span>REACT + VITE</span><span>TF-IDF</span><span>NETLIFY</span>
+      </div>
+    </div>
+
+    <div class="proj-card proj-yc">
+      <div class="proj-num">004</div>
+      <div class="proj-category-wrap">
+        <span class="proj-category">STORAGE — PRODUCTIVITY — AI</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">ClearSpace</h3>
+      <p class="proj-desc">AI-powered storage management platform that scans, categorises and intelligently clears device storage. Smart suggestions, duplicate detection and one-click cleanup — making storage management effortless.</p>
+      <div class="proj-stack">
+        <span>AI AGENTS</span><span>STORAGE API</span><span>REACT</span><span>PYTHON</span>
+      </div>
+    </div>
+
+    <div class="proj-card proj-yc">
+      <div class="proj-num">005</div>
+      <div class="proj-category-wrap">
+        <span class="proj-category">GAMING — AI — STRATEGY</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">War of Gods</h3>
+      <p class="proj-desc">AI-driven mythological strategy game where gods from different pantheons battle across procedurally generated realms. Players choose deities, build divine armies and fight AI opponents with unique godly abilities.</p>
+      <div class="proj-stack">
+        <span>AI GAME ENGINE</span><span>PROCEDURAL GEN</span><span>JAVASCRIPT</span><span>CANVAS API</span>
+      </div>
+    </div>
+
+    <div class="proj-card proj-yc">
+      <div class="proj-num">006</div>
+      <div class="proj-category-wrap">
+        <span class="proj-category">IMAGE AI — ECOMMERCE — JEWELLERY</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">AI Vista — Jewellery Visual Search</h3>
+      <p class="proj-desc">Visual search tool for jewellery e-commerce under KnightLabs AI. Upload a photo of any jewellery piece and instantly find matching or similar products across catalogues using computer vision.</p>
+      <div class="proj-stack">
+        <span>COMPUTER VISION</span><span>IMAGE SEARCH</span><span>ECOMMERCE API</span><span>PYTHON</span>
+      </div>
+    </div>
+
+    <div class="proj-card proj-yc">
+      <div class="proj-num">007</div>
+      <div class="proj-category-wrap">
+        <span class="proj-category">MOBILITY — AI — MAPS</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">ParkFinder</h3>
+      <p class="proj-desc">Real-time parking availability platform using AI prediction and live sensor data. Finds the nearest available spot, predicts availability windows and integrates with navigation for seamless urban mobility.</p>
+      <div class="proj-stack">
+        <span>MAPS API</span><span>AI PREDICTION</span><span>REAL-TIME DATA</span><span>REACT</span>
+      </div>
+    </div>
+
+    <div class="proj-card proj-yc">
+      <div class="proj-num">008</div>
+      <div class="proj-category-wrap">
+        <span class="proj-category">AI — IMAGE — CONTENT GENERATION</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">Flux Creative Studio</h3>
+      <p class="proj-desc">AI creative platform powered by Flux image generation models. Text-to-image, style transfer and batch creative generation for designers, marketers and content creators at scale.</p>
+      <div class="proj-stack">
+        <span>FLUX MODELS</span><span>IMAGE GEN AI</span><span>NEXT.JS</span><span>API INTEGRATION</span>
+      </div>
+    </div>
+
+    <div class="proj-card proj-yc">
+      <div class="proj-num">009</div>
+      <div class="proj-category-wrap">
+        <span class="proj-category">P2P — MARKETPLACE — EDTECH</span>
+        <span class="proj-yc-badge">YC STREAK</span>
+      </div>
+      <h3 class="proj-name">SkillBridge</h3>
+      <p class="proj-desc">Peer-to-peer skill marketplace built on Next.js. Users teach what they know and learn what they need — live sessions, AI-matched skill pairing, smart scheduling and reputation scoring.</p>
+      <div class="proj-stack">
+        <span>NEXT.JS</span><span>AI MATCHING</span><span>P2P MARKETPLACE</span><span>REAL-TIME</span>
+      </div>
+    </div>
+
+    <!-- HARDWARE / SHIPPED PROJECTS -->
+    <div class="proj-card">
+      <div class="proj-num">010</div>
+      <div class="proj-category">WHATSAPP AI — SAAS</div>
+      <h3 class="proj-name">AI Chroney Platform</h3>
+      <p class="proj-desc">WhatsApp AI chatbot and campaign automation platform under KnightLabs AI. MRR ₹1.2L with 4 enterprise clients — Jaro Education, Accurex, Symbiosis. AWS + OpenAI + MSG91 infrastructure.</p>
+      <div class="proj-stack">
+        <span>WHATSAPP API</span><span>OPENAI</span><span>AWS</span><span>MSG91</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">011</div>
       <div class="proj-category">COMPUTER VISION — HARDWARE</div>
       <h3 class="proj-name">Smart Kiosk System</h3>
-      <p class="proj-desc">Raspberry Pi OS-based interactive display with AI-powered voice interaction and real-time data visualisation for public deployment environments.</p>
+      <p class="proj-desc">Raspberry Pi OS-based interactive public display with AI voice interaction, real-time data visualisation and 3D holographic display capability.</p>
       <div class="proj-stack">
-        <span>RASPBERRY PI</span>
-        <span>PYTHON</span>
-        <span>OPENCV</span>
-        <span>VOICE AI</span>
+        <span>RASPBERRY PI</span><span>OPENCV</span><span>VOICE AI</span><span>PYTHON</span>
       </div>
     </div>
 
     <div class="proj-card">
-      <div class="proj-num">003</div>
-      <div class="proj-category">ML — COMPUTER VISION</div>
-      <h3 class="proj-name">YOLO Object Detection</h3>
-      <p class="proj-desc">AI-based computer vision model for real-world object recognition. Applied to robotics and autonomous decision-making pipelines with high accuracy benchmarks.</p>
-      <div class="proj-stack">
-        <span>YOLO</span>
-        <span>TENSORFLOW</span>
-        <span>OPENCV</span>
-        <span>PYTHON</span>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-num">004</div>
+      <div class="proj-num">012</div>
       <div class="proj-category">ROBOTICS — IOT</div>
       <h3 class="proj-name">Maze Solving Bot</h3>
-      <p class="proj-desc">Sensor-integrated autonomous robotics project. Pathfinding algorithms on Arduino with real-time environment navigation and obstacle avoidance logic.</p>
+      <p class="proj-desc">Sensor-integrated autonomous robot with Arduino-based pathfinding algorithms for real-time environment navigation and obstacle avoidance.</p>
       <div class="proj-stack">
-        <span>ARDUINO</span>
-        <span>SENSORS</span>
-        <span>EMBEDDED C</span>
-        <span>PATHFINDING</span>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-num">005</div>
-      <div class="proj-category">GEOSPATIAL — AI</div>
-      <h3 class="proj-name">Map View Nexus</h3>
-      <p class="proj-desc">Intelligent location and data mapping system for real-time geospatial visualisation, integrated with AI for contextual location-based intelligence.</p>
-      <div class="proj-stack">
-        <span>MAPS API</span>
-        <span>JAVASCRIPT</span>
-        <span>AI</span>
-        <span>DATA VIZ</span>
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-num">006</div>
-      <div class="proj-category">EDTECH — AI</div>
-      <h3 class="proj-name">SkillBridge Platform</h3>
-      <p class="proj-desc">AI-supported engagement platform bridging skill gaps. Personalised learning pathways, automated assessments and intelligent recommendations at scale.</p>
-      <div class="proj-stack">
-        <span>LLMS</span>
-        <span>EDTECH</span>
-        <span>PERSONALISATION</span>
-        <span>AI AGENTS</span>
+        <span>ARDUINO</span><span>SENSORS</span><span>EMBEDDED C</span><span>PATHFINDING</span>
       </div>
     </div>
 
