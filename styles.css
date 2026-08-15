@@ -653,9 +653,14 @@ body {
 /* ── SCROLL REVEAL ─────────────────────────────────────────── */
 .sr {
   opacity: 0; transform: translateY(28px);
-  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
 }
-.sr.in { opacity: 1; transform: translateY(0); }
+.sr.in { opacity: 1; transform: translateY(0) !important; }
+
+/* Guarantee pv-cards are never permanently invisible */
+.pv-card { opacity: 1; }
+.pv-card.sr { opacity: 0; }
+.pv-card.sr.in { opacity: 1; }
 
 /* ── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 1200px) {
